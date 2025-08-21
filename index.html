@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Registration Form</title>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Embedded CSS -->
+  <style>
+    h2 {
+      text-align: center;
+      color: #222;
+      margin-bottom: 20px;
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-container">
+    <!-- LEFT SIDE - Tournament Info -->
+    <div class="info-section">
+      <!-- Inline CSS -->
+      <img src="KPR.jpg" alt="KPR Institute of Engineering and Technology" style="border-radius: 50%; border: 3px solid #FFD700;">
+
+      <h2>🏆 KPR Institute Annual Sports Trophy</h2>
+      <p>Experience the spirit of sportsmanship and excellence at the
+        <strong>KPR Institute of Engineering and Technology</strong>.
+        Join us for an unforgettable tournament bringing together schools and colleges across the region.
+      </p>
+
+      <ul>
+        <li>Each institution can register one team per sport.</li>
+        <li>Valid student ID cards are mandatory for participation.</li>
+        <li>All players must report 30 minutes prior to their scheduled match.</li>
+        <li>Strict adherence to fair play and discipline is expected.</li>
+        <li>Medical and first-aid facilities will be available on campus.</li>
+        <li>🍴 Food & Refreshments will be arranged for all players and staff.</li>
+        <li>📜 Participation certificates will be awarded to every participant.</li>
+        <li>🏅 Attractive prizes for winners:
+          <ul>
+            <li><strong>1st Place:</strong> Trophy + Gold Medal + Certificate</li>
+            <li><strong>2nd Place:</strong> Silver Medal + Certificate</li>
+            <li><strong>3rd Place:</strong> Bronze Medal + Certificate</li>
+          </ul>
+        </li>
+        <li>🎶 Fun and cultural programs during the closing ceremony.</li>
+        <li>🎁 Special recognition awards for Best Player & Best Team Spirit.</li>
+      </ul>
+
+      <p style="margin-top: 40%;"><strong>Organizer Contact:</strong><br>
+        sportsevent@kpriet.edu | +91 98765 43210
+      </p>
+      <p><em>“Play with Passion, Compete with Integrity, Celebrate with Pride.”</em></p>
+    </div>
+
+    <!-- RIGHT SIDE - Registration Form -->
+    <div class="form-section">
+      <h2>Sports Registration Form</h2>
+      <form id="sportsForm">
+        <label for="schoolName">School Name</label>
+        <input type="text" id="schoolName" name="schoolName" required>
+
+        <label for="collegeName">College Name (If Applicable)</label>
+        <input type="text" id="collegeName" name="collegeName">
+
+        <label for="gender">Team Gender</label>
+        <select id="gender" name="gender" required>
+          <option value="">-- Select Gender --</option>
+          <option value="Boys">Boys</option>
+          <option value="Girls">Girls</option>
+          <option value="Mixed">Mixed</option>
+        </select>
+
+        <label for="sport">Select Sport</label>
+        <select id="sport" name="sport" required>
+          <option value="">-- Choose Sport --</option>
+          <option>Cricket</option>
+          <option>Football</option>
+          <option>Basketball</option>
+          <option>Volleyball</option>
+          <option>Badminton</option>
+          <option>Table Tennis</option>
+          <option>Chess</option>
+          <option>Hockey</option>
+          <optgroup label="Athletics">
+            <option value="100m">100m Sprint</option>
+            <option value="200m">200m Sprint</option>
+            <option value="400m">400m Run</option>
+            <option value="longjump">Long Jump</option>
+            <option value="highjump">High Jump</option>
+            <option value="relay">4x100m Relay</option>
+          </optgroup>
+        </select>
+
+        <label for="captainName">Team Captain Name</label>
+        <input type="text" id="captainName" name="captainName" required>
+
+        <label for="captainNo">Captain Phone Number</label>
+        <input type="text" id="captainNo" name="captainNo" required placeholder="10-digit number">
+
+        <label for="captainEmail">Captain Email</label>
+        <input type="email" id="captainEmail" name="captainEmail" required>
+
+        <label for="ptSir">PT Sir / Coach Name</label>
+        <input type="text" id="ptSir" name="ptSir" required>
+
+        <label for="teamSize">Team Size</label>
+        <input type="number" id="teamSize" name="teamSize" min="1" required>
+
+        <label for="registrationDate">Date of Registration</label>
+        <input type="date" id="registrationDate" name="registrationDate" required>
+
+        <label for="gameDate">Date of Game (Set by Organizer)</label>
+        <input type="date" id="gameDate" name="gameDate" value="2025-09-15" readonly>
+
+        <label for="remarks">Additional Remarks</label>
+        <textarea id="remarks" name="remarks" rows="3" placeholder="Any special requirements"></textarea>
+
+        <p id="errorMsg" class="error"></p>
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- External JS -->
+  <script src="script.js"></script>
+</body>
+
+</html>
