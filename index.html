@@ -31,12 +31,12 @@
     <!-- LEFT SIDE - Tournament Info -->
     <div class="info-section">
       <!-- Inline CSS -->
-      <img src="KPR.jpg" alt="KPR Institute of Engineering and Technology" style="border-radius: 50%; border: 3px solid #FFD700;">
+      <img src="KPR.jpg" alt="KPR Institute of Engineering and Technology">
 
       <h2>🏆 KPR Institute Annual Sports Trophy</h2>
       <p>Experience the spirit of sportsmanship and excellence at the
         <strong>KPR Institute of Engineering and Technology</strong>.
-        Join us for an unforgettable tournament bringing together schools and colleges across the region.
+        Join us for an unforgettable tournament bringing together schools across the region.
       </p>
 
       <ul>
@@ -58,9 +58,14 @@
         <li>🎁 Special recognition awards for Best Player & Best Team Spirit.</li>
       </ul>
 
-      <p style="margin-top: 40%;"><strong>Organizer Contact:</strong><br>
+      <p><strong>Organizer Contact:</strong><br>
         sportsevent@kpriet.edu | +91 98765 43210
       </p>
+      <div style="text-align: center; margin-top: 20px;" class="qr">
+        <img src="QR.jpg" alt="Payment QR Code"
+          style="width:180px; height:auto; border:2px solid #000; border-radius:10px;">
+        <p><strong>Scan to Pay</strong></p>
+      </div>
       <p><em>“Play with Passion, Compete with Integrity, Celebrate with Pride.”</em></p>
     </div>
 
@@ -70,9 +75,7 @@
       <form id="sportsForm">
         <label for="schoolName">School Name</label>
         <input type="text" id="schoolName" name="schoolName" required>
-
-        <label for="collegeName">College Name (If Applicable)</label>
-        <input type="text" id="collegeName" name="collegeName">
+        <span class="error" id="schoolNameError"></span>
 
         <label for="gender">Team Gender</label>
         <select id="gender" name="gender" required>
@@ -81,6 +84,7 @@
           <option value="Girls">Girls</option>
           <option value="Mixed">Mixed</option>
         </select>
+        <span class="error" id="genderError"></span>
 
         <label for="sport">Select Sport</label>
         <select id="sport" name="sport" required>
@@ -102,34 +106,41 @@
             <option value="relay">4x100m Relay</option>
           </optgroup>
         </select>
+        <span class="error" id="sportError"></span>
 
         <label for="captainName">Team Captain Name</label>
         <input type="text" id="captainName" name="captainName" required>
+        <span class="error" id="captainNameError"></span>
 
         <label for="captainNo">Captain Phone Number</label>
         <input type="text" id="captainNo" name="captainNo" required placeholder="10-digit number">
-
-        <label for="captainEmail">Captain Email</label>
-        <input type="email" id="captainEmail" name="captainEmail" required>
+        <span class="error" id="captainNoError"></span>
 
         <label for="ptSir">PT Sir / Coach Name</label>
         <input type="text" id="ptSir" name="ptSir" required>
+        <span class="error" id="ptSirError"></span>
 
         <label for="teamSize">Team Size</label>
         <input type="number" id="teamSize" name="teamSize" min="1" required>
+        <span class="error" id="teamSizeError"></span>
 
         <label for="registrationDate">Date of Registration</label>
         <input type="date" id="registrationDate" name="registrationDate" required>
+        <span class="error" id="registrationDateError"></span>
 
         <label for="gameDate">Date of Game (Set by Organizer)</label>
-        <input type="date" id="gameDate" name="gameDate" value="2025-09-15" readonly>
+        <input type="text" id="gameDate" name="gameDate" value="2025-09-15 to 2025-09-17" readonly>
+
+        <label for="payment" >Payment Screenshot(upload) :</label>
+        <input type="file" style="background: white;" id="payment" name="payment" accept="image/*" required>
 
         <label for="remarks">Additional Remarks</label>
         <textarea id="remarks" name="remarks" rows="3" placeholder="Any special requirements"></textarea>
+        <span class="error" id="remarksError"></span>
 
-        <p id="errorMsg" class="error"></p>
         <button type="submit">Register</button>
       </form>
+
     </div>
   </div>
 
