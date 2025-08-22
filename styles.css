@@ -9,6 +9,7 @@ body {
   justify-content: center;
 }
 
+
 .main-container {
   display: flex;
   max-width: 1200px;
@@ -47,6 +48,12 @@ body {
   margin-bottom: 12px;
   font-size: 16px;
   line-height: 1.6;
+}
+#gender{
+  width:104%;
+}
+#sport{
+  width:104%;
 }
 
 .info-section ul {
