@@ -1,42 +1,93 @@
 document.getElementById("sportsForm").addEventListener("submit", function (event) {
   event.preventDefault();
+  let isValid = true;
 
-  let errorMsg = document.getElementById("errorMsg");
-  errorMsg.textContent = "";
+  // Clear old errors
+  document.querySelectorAll(".error").forEach(e => e.textContent = "");
 
+  // Get values
+  let schoolName = document.getElementById("schoolName").value.trim();
+  let gender = document.getElementById("gender").value;
+  let sport = document.getElementById("sport").value;
+  let captainName = document.getElementById("captainName").value.trim();
   let captainNo = document.getElementById("captainNo").value.trim();
-  let captainEmail = document.getElementById("captainEmail").value.trim();
+  let ptSir = document.getElementById("ptSir").value.trim();
   let teamSize = document.getElementById("teamSize").value;
   let registrationDate = document.getElementById("registrationDate").value;
+  let remarks = document.getElementById("remarks").value.trim();
 
-  // Validation for phone number (10 digits)
+  // Patterns
+  let namePattern = /^[A-Za-z\s]{2,50}$/;
   let phonePattern = /^[0-9]{10}$/;
-  if (!phonePattern.test(captainNo)) {
-    errorMsg.textContent = "Please enter a valid 10-digit phone number.";
-    return;
-  }
-
-  // Validation for email
-  let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-  if (!emailPattern.test(captainEmail)) {
-    errorMsg.textContent = "Please enter a valid email address.";
-    return;
-  }
-
-  // Validation for future date (registration cannot be in the past)
   let today = new Date().toISOString().split("T")[0];
-  if (registrationDate < today) {
-    errorMsg.textContent = "Registration date cannot be in the past.";
-    return;
+
+  // Validation
+  if (!schoolName) {
+    document.getElementById("schoolNameError").textContent = "School Name is required.";
+    isValid = false;
+  } else if (!namePattern.test(schoolName)) {
+    document.getElementById("schoolNameError").textContent = "Only letters allowed (min 2 characters).";
+    isValid = false;
   }
 
-  // Validation for team size
-  if (teamSize <= 0) {
-    errorMsg.textContent = "Team size must be at least 1.";
-    return;
+  if (!gender) {
+    document.getElementById("genderError").textContent = "Please select team gender.";
+    isValid = false;
+  }
+
+  if (!sport) {
+    document.getElementById("sportError").textContent = "Please select a sport.";
+    isValid = false;
+  }
+
+  if (!captainName) {
+    document.getElementById("captainNameError").textContent = "Captain Name is required.";
+    isValid = false;
+  } else if (!namePattern.test(captainName)) {
+    document.getElementById("captainNameError").textContent = "Only letters allowed.";
+    isValid = false;
+  }
+
+  if (!captainNo) {
+    document.getElementById("captainNoError").textContent = "Phone number is required.";
+    isValid = false;
+  } else if (!phonePattern.test(captainNo)) {
+    document.getElementById("captainNoError").textContent = "Must be exactly 10 digits.";
+    isValid = false;
+  }
+
+  if (!ptSir) {
+    document.getElementById("ptSirError").textContent = "PT Sir/Coach Name is required.";
+    isValid = false;
+  } else if (!namePattern.test(ptSir)) {
+    document.getElementById("ptSirError").textContent = "Only letters allowed.";
+    isValid = false;
+  }
+
+  if (!teamSize) {
+    document.getElementById("teamSizeError").textContent = "Team size is required.";
+    isValid = false;
+  } else if (teamSize <= 0 || teamSize > 20) {
+    document.getElementById("teamSizeError").textContent = "Team size must be between 1 and 20.";
+    isValid = false;
+  }
+
+  if (!registrationDate) {
+    document.getElementById("registrationDateError").textContent = "Registration date is required.";
+    isValid = false;
+  } else if (registrationDate < today) {
+    document.getElementById("registrationDateError").textContent = "Date cannot be in the past.";
+    isValid = false;
+  }
+
+  if (remarks && remarks.length < 5) {
+    document.getElementById("remarksError").textContent = "Remarks should be at least 5 characters.";
+    isValid = false;
   }
 
   // Success
-  alert("✅ Registration Successful for " + document.getElementById("sport").value + "!");
-  document.getElementById("sportsForm").reset();
+  if (isValid) {
+    alert("✅ Registration Successful for " + sport + "!");
+    document.getElementById("sportsForm").reset();
+  }
 });
